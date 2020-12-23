@@ -20,8 +20,8 @@ export default function List1(props) {
       />
       <List component="nav" aria-label="main mailbox folders">
         <div className="studentList">
-          {students.map((student, index) => (
-            <ListItem button onClick={() => onClick(student)}>
+          {students.map((student, index, id) => (
+            <ListItem button key={student.id} onClick={() => onClick(student)}>
               <ListItemIcon>
                 <AccountBoxIcon />
               </ListItemIcon>
