@@ -51,27 +51,26 @@ export default function App() {
       hobby: "travelling"
     }
   ];
-  const [studentIndex, setStudentIndex] = React.useState(-1);
-  const [students, setStudents] = React.useState(studentList);
-  const handleClick = (index) => setStudentIndex(index);
+  const [student, setStudent] = React.useState({});
+  const [filterValue, setFilterValue] = React.useState("");
+  const handleClick = (student) => setStudent(student);
   const handleChange = (event) => {
-    const filterValue = event.target.value;
-    const filteredStudent = studentList.filter((student) =>
-      student.name.toLowerCase().includes(filterValue.toLowerCase())
-    );
-    setStudentIndex(-1);
-    setStudents(filteredStudent);
+    setFilterValue(event.target.value);
+    setStudent({});
   };
   return (
     <div className="container">
       <List1
-        students={students}
+        students={studentList.filter((student) =>
+          student.name
+            .toLocaleLowerCase()
+            .includes(filterValue.toLocaleLowerCase())
+        )}
         onClick={handleClick}
         onChange={handleChange}
       />
-      {studentIndex !== -1 && (
-        <Details className="details" student={students[studentIndex]} />
-      )}
+
+      <Details className="details" student={student} />
     </div>
   );
 }

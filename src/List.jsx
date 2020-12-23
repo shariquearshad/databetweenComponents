@@ -21,7 +21,7 @@ export default function List1(props) {
       <List component="nav" aria-label="main mailbox folders">
         <div className="studentList">
           {students.map((student, index) => (
-            <ListItem button onClick={() => onClick(index)}>
+            <ListItem button onClick={() => onClick(student)}>
               <ListItemIcon>
                 <AccountBoxIcon />
               </ListItemIcon>
